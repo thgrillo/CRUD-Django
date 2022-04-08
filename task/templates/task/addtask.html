@@ -1,0 +1,21 @@
+{% extends 'task/base.html' %}
+
+{% block maincontent %}
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6" style="display: flex; justify-content: center;">
+            <form action="" method="POST">
+                {% csrf_token %}                          
+                <div class="mb-3 mt-5">
+                {{ form.title }}
+                <input type="submit" class="btn btn-primary" value="Add">
+                </div>
+            </form>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+
+{% endblock %}

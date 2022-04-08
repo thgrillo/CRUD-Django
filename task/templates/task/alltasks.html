@@ -1,0 +1,59 @@
+{% extends 'task/base.html' %}
+
+{% block maincontent %}
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+        </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="list-group mt-5">
+                            {% for task in tasks %}
+                                {% if task.done == False %}
+                                <li class="list-group-item"> 
+                                    {{ task }}
+                                    <a href="{% url 'deletetask' task.id %}" style="float: right;">
+                                        <button class="btn btn-danger" style="float: right;">Delete</button>
+                                    </a>
+                                    <a href="{% url 'updatetask' task.id %}" style="float: right;">
+                                        <button class="btn btn-warning" style="float: right;">Update</button>
+                                    </a>
+                                    <a href="{% url 'donetask' task.id %}" style="float: right;">
+                                        <button class="btn btn-success" style="float: right;">Done</button>
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="list-group-item" style="background-color: #e8facc;text-decoration: line-through;"> 
+
+                                    {{ task }}
+                                    <a href="{% url 'deletetask' task.id %}" style="float: right;">
+                                        <button class="btn btn-danger" style="float: right;">Delete</button>
+                                    </a>
+                                    <a href="{% url 'updatetask' task.id %}" style="float: right;">
+                                        <button class="btn btn-warning" style="float: right;">Update</button>
+                                    </a>
+                                </li>
+                                {% endif%}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
+
+<!-- jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    const checktask = $("input.checkbox:eq(0)")
+    
+
+    $( document ).ready(function() {
+        console.log( "testing jquery." );
+    });
+</script>
+{% endblock %}
+  

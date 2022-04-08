@@ -1,0 +1,32 @@
+{% extends 'task/base.html' %}
+
+{% block maincontent %}
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+        </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                            <div class="mb-3 mt-5">
+                                <p>Are you sure you want to done "{{ task }}" ?</p>
+                            
+                            <a href="{% url 'home' %}">
+                                <button class="btn btn-warning">Cancel</button>
+                            </a>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <a href="{% url 'donetask' task.id %}">
+                                    <button type="submit" class="btn btn-success">Done</button>
+                                </a>
+                            </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
+{% endblock %}
+  

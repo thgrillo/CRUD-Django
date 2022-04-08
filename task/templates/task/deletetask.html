@@ -1,0 +1,32 @@
+{% extends 'task/base.html' %}
+
+{% block maincontent %}
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+        </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                            <div class="mb-3 mt-5">
+                                <p>Are you sure you want to delete "{{ item }}" ?</p>
+                            
+                            <a href="{% url 'home' %}">
+                                <button class="btn btn-warning">Cancel</button>
+                            </a>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <a href="{% url 'deletetask' item.id %}">
+                                    <button type="submit" class="btn btn-success">Delete</button>
+                                </a>
+                            </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
+{% endblock %}
+  
