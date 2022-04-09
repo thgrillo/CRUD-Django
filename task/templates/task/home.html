@@ -1,5 +1,7 @@
 {% extends 'task/base.html' %}
 
+{% load widget_tweaks %}
+
 {% block maincontent %}
     <div class="container">
         <div class="row">
@@ -8,18 +10,19 @@
                     <div class="col-12">
                         <form action="" method="POST">
                             {% csrf_token %}                          
-                            <div class="mb-3 mt-5">
-                            {{ form.title }}
-                            <button type="submit" class="btn btn-success" style="border-radius:50px;">Create Task</button>
+                            <div class="mb-3 mt-5" style="display: flex;flex-wrap: nowrap;align-content: center;flex-direction: column;justify-content: center;align-items: center;margin-left: 25%;
+                            margin-right: 25%;">
+                            {{ form.title|add_class:"form-control" }}
+                            <button type="submit" class="btn btn-success mt-3" style="border-radius:50px; color:white;">Create Task</button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-left: 25%;margin-right: 25%;">
                     <div class="col-12">
-                        <h3 class="text-center" style="color: white;">TO DO</h3>
+                        <h3 class="text-center mt-5" style="color: white;">TO DO</h3>
                         <div class="shadow-lg mb-5 bg-white rounded" style="background-color: #8cb9e0 !important;border-radius: 15px !important;">
-                            <ul class="list-group mt-5">
+                            <ul class="list-group ">
                                 {% for task in tasks %}
                                 {% if task.done == False %}
                                 <li class="list-group-item" style="background-color: #f0f8ff; border-radius: 15px;"> 
