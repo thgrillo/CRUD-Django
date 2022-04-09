@@ -3,49 +3,47 @@
 {% block maincontent %}
     <div class="container">
         <div class="row">
-            <div class="col-3">
-            </div>
-            <div class="col-6">
+            <div class="col-12">
                 <div class="row">
                     <div class="col-12">
                         <form action="" method="POST">
                             {% csrf_token %}                          
                             <div class="mb-3 mt-5">
                             {{ form.title }}
-                            <button type="submit" class="btn btn-success">Add</button>
+                            <button type="submit" class="btn btn-success" style="border-radius:50px;">Create Task</button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <h3 class="text-center">To do</h3>
-                        <ul class="list-group mt-5">
-                            {% for task in tasks %}
-                            {% if task.done == False %}
-                                <li class="list-group-item"> 
-                            
-                             {% comment %} <input class="form-check-input me-1" type="checkbox" value="" aria-label="checkboxtask"> {% endcomment %}
-                                {{ task }}
-                                {% comment %} <a href="{% url 'deletetask' task.id %}" style="float: right;">
-                                    <button class="btn btn-danger" style="float: right;">Delete</button>
-                                </a> {% endcomment %}
-                                {% comment %} <a href="{% url 'updatetask' task.id %}" style="float: right;">
-                                    <button class="btn btn-warning" style="float: right;">Update</button>
-                                </a> {% endcomment %}
-                                <a href="{% url 'donetask' task.id %}" style="float: right;">
-                                    <button type="submit" class="btn btn-success" style="float: right;">Done</button>
-                                </a>
-                            </li>
-                            {% endif %}
-                                    
-                            {% endfor %}
-                        </ul>
+                        <h3 class="text-center" style="color: white;">TO DO</h3>
+                        <div class="shadow-lg mb-5 bg-white rounded" style="background-color: #8cb9e0 !important;border-radius: 15px !important;">
+                            <ul class="list-group mt-5">
+                                {% for task in tasks %}
+                                {% if task.done == False %}
+                                <li class="list-group-item" style="background-color: #f0f8ff; border-radius: 15px;"> 
+                                
+                                {% comment %} <input class="form-check-input me-1" type="checkbox" value="" aria-label="checkboxtask"> {% endcomment %}
+                                    {{ task }}
+                                    {% comment %} <a href="{% url 'deletetask' task.id %}" style="float: right;">
+                                        <button class="btn btn-danger" style="float: right;">Delete</button>
+                                    </a> {% endcomment %}
+                                    {% comment %} <a href="{% url 'updatetask' task.id %}" style="float: right;">
+                                        <button class="btn btn-warning" style="float: right;">Update</button>
+                                    </a> {% endcomment %}
+                                    <a href="{% url 'donetask' task.id %}" style="float: right;">
+                                        <button type="submit" class="btn btn-success" style="float: right;border-radius:50px;">Done</button>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                        
+                                {% endfor %}
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 
-            </div>
-            <div class="col-3">
             </div>
         </div>
     </div>
